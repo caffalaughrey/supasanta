@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3]
+
+[ext_resource type="Texture2D" uid="" path="res://textures/dnn/texture_diffuse.png" id="1_aa"]
+[ext_resource type="Texture2D" uid="" path="res://textures/dnn/texture_normal.png" id="2_bb"]
+[ext_resource type="Texture2D" uid="" path="res://textures/dnn/texture_metallic.png" id="3_cc"]
+[ext_resource type="Texture2D" uid="" path="res://textures/dnn/texture_roughness.png" id="4_dd"]
+
+[resource]
+albedo_texture = ExtResource( "1_aa" )
+normal_enabled = true
+normal_texture = ExtResource( "2_bb" )
+metallic = 1.0
+metallic_texture = ExtResource( "3_cc" )
+roughness = 1.0
+roughness_texture = ExtResource( "4_dd" )
+texture_filter = 2
+metallic_specular = 0.5
+
+
