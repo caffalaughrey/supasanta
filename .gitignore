@@ -14,3 +14,8 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+.cursor/mcp.json
+.DS_Store
+santa_rigged.broken_*
+santa_rigged.pre*

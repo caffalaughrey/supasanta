@@ -33,7 +33,7 @@ func run(runner) -> void:
 	get_tree().root.add_child(inst)
 	await get_tree().process_frame
 	# Allow physics to settle
-	for i in range(0, 10):
+	for i in range(0, 20):
 		await get_tree().process_frame
 	var player: CharacterBody3D = inst.get_node_or_null("Player") as CharacterBody3D
 	# Ensure auto alignment is enabled for the test

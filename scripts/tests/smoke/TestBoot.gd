@@ -22,5 +22,3 @@ func _start_watchdog() -> void:
 	await get_tree().create_timer(30.0).timeout
 	push_error("[SMOKE] Watchdog timeout, forcing exit.")
 	get_tree().quit(2)
-
-

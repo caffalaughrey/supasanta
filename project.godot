@@ -21,6 +21,7 @@ InputSetup="*res://scripts/autoload/input_setup.gd"
 TestBoot="*res://scripts/tests/smoke/TestBoot.gd"
 InputDebug="*res://scripts/autoload/input_debug.gd"
 UnitBoot="*res://scripts/tests/unit/UnitBoot.gd"
+AnimDebug="*res://scripts/debug/anim_debug.gd"
 
 [rendering]
 

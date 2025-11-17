@@ -65,5 +65,3 @@ func _set_overlay_lines(lines: Array[String]) -> void:
 
 func _process_event_for_test(event: InputEvent) -> void:
 	_unhandled_input(event)
-
-

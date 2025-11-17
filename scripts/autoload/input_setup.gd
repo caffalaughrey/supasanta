@@ -1,11 +1,15 @@
 extends Node
 
 func _ready() -> void:
+	# Set a moderate default deadzone so axes register while avoiding drift
+	ProjectSettings.set_setting("input_devices/joypad/default_deadzone", 0.25)
 	# Movement
 	_add_action_key("move_left", Key.KEY_LEFT)
 	_add_action_key("move_right", Key.KEY_RIGHT)
-	# Calibrated axes from user:
-	# axis 0: left (-1) / right (+1), axis 1: up (-1) / down (+1)
+	# Support BOTH D-pad buttons and analog/D-pad axes
+	_add_action_joypad_button("move_left", JOY_BUTTON_DPAD_LEFT)
+	_add_action_joypad_button("move_right", JOY_BUTTON_DPAD_RIGHT)
+	# axis 0: left (-1) / right (+1)
 	_add_action_joypad_axis_index("move_left", 0, -1.0)
 	_add_action_joypad_axis_index("move_right", 0, 1.0)
 
@@ -75,5 +79,3 @@ func _add_action_joypad_axis_index(action_name: String, axis_index: int, axis_va
 	ev.axis = axis_index
 	ev.axis_value = axis_value
 	InputMap.action_add_event(action_name, ev)
-
-
