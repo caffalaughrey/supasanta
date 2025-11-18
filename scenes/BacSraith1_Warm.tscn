@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://models/bac_sraith1/bac_sraith1.glb" id="1_glb"]
+[ext_resource type="Script" path="res://scripts/items/BacSraith1.gd" id="2_script"]
+[ext_resource type="Material" path="res://materials/bac_sraith1_warm.tres" id="3_mat"]
+
+[node name="BacSraith1_Warm" type="Node3D"]
+script = ExtResource("2_script")
+material = ExtResource("3_mat")
+
+[node name="Model" parent="." instance=ExtResource("1_glb")]
+
+
+
