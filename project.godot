@@ -22,7 +22,17 @@ TestBoot="*res://scripts/tests/smoke/TestBoot.gd"
 InputDebug="*res://scripts/autoload/input_debug.gd"
 UnitBoot="*res://scripts/tests/unit/UnitBoot.gd"
 AnimDebug="*res://scripts/debug/anim_debug.gd"
+PackLoader="*res://scripts/autoload/pack_loader.gd"
+WebQuality="*res://scripts/autoload/web_quality.gd"
 
 [rendering]
 
+environment/ssao/quality=0
+environment/ssil/quality=0
+scaling_3d/mode="FSR 1.0"
+scaling_3d/scale=0.9
 environment/default_environment="res://default_env.tres"
+anti_aliasing/quality/use_fxaa=true
+shadows/directional_shadow/size=2048
+shadows/soft_shadow_filter_quality=0
+environment/ssr/enable=false

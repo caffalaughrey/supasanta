@@ -1,0 +1,58 @@
+name: web-build-and-test
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test-and-export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Godot 4.5.1 headless
+        run: |
+          GODOT_VERSION=4.5.1
+          wget -q https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip
+          unzip -q Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip
+          mv Godot_v${GODOT_VERSION}-stable_linux.x86_64 godot
+          chmod +x godot
+          # Export templates
+          wget -q https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/Godot_v${GODOT_VERSION}-stable_export_templates.tpz
+          mkdir -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+          tar -xJf Godot_v${GODOT_VERSION}-stable_export_templates.tpz -C /tmp
+          cp -r /tmp/templates/* ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable/
+      - name: Run unit and smoke tests
+        env:
+          GODOT_BIN: ${{ github.workspace }}/godot
+        run: |
+          bash tools/ci/run_tests.sh
+
+      - name: Export Web (no threads)
+        run: |
+          ./godot --headless --path . --export-release "Web" build/web/index.html
+      - name: Check Web size budget
+        run: |
+          bash tools/ci/check_size.sh build/web 30
+
+      - name: Export Web (Threads)
+        run: |
+          ./godot --headless --path . --export-release "Web (Threads)" build/web_threads/index.html
+      - name: Check Web (Threads) size budget
+        run: |
+          bash tools/ci/check_size.sh build/web_threads 30
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-builds
+          path: |
+            build/web/**
+            build/web_threads/**
+
+
+

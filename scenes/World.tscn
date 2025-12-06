@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://1v5182h5ogt2"]
+[gd_scene load_steps=18 format=3 uid="uid://1v5182h5ogt2"]
 
 [ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1_rq3nq"]
 [ext_resource type="Script" uid="uid://dc6hym8fautho" path="res://scripts/camera/CameraRig.gd" id="2_6w2h8"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" path="res://textures/bac_tirdhreach/texture_metallic.png" id="10_bac_metal"]
 [ext_resource type="Texture2D" path="res://textures/bac_tirdhreach/texture_roughness.png" id="11_bac_rough"]
 [ext_resource type="Script" path="res://scripts/background/ParallaxBackdrop.gd" id="12_bg_script"]
+[ext_resource type="PackedScene" path="res://models/penguin/penguin_french.glb" id="13_penguin"]
  
 
 [sub_resource type="BoxShape3D" id="3"]
@@ -65,6 +66,7 @@ script = ExtResource("12_bg_script")
 
 [node name="model" parent="BacTirdhreachBG"]
 surface_material_override/0 = SubResource("12")
+gi_mode = 1
 
 [node name="MoonLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.906308, -0.258819, 0.333333, 0, 0.812619, 0.5828, -0.422618, -0.522499, 0.740544, 0, 10, -5)
@@ -89,6 +91,11 @@ fov = 65.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("9")
 
+[node name="LightmapGI" type="LightmapGI" parent="."]
+use_denoiser = true
+bias = 0.0005
+directional = true
+
 [node name="Player" parent="." instance=ExtResource("1_rq3nq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
 
@@ -101,9 +108,13 @@ shape = SubResource("3")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 mesh = SubResource("4")
+gi_mode = 1
 
 [node name="Glombolg" parent="." instance=ExtResource("3_glombolg")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, 0, 0)
+
+[node name="PenguinFrench" parent="." instance=ExtResource("13_penguin")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 0)
 
 [node name="BacSraith1" parent="." instance=ExtResource("4_bac_base")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)

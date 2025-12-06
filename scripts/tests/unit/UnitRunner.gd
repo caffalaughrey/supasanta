@@ -18,12 +18,16 @@ func run_all() -> void:
 		"res://scripts/tests/unit/cases/test_input_debug.gd",
 		"res://scripts/tests/unit/cases/test_material_applied.gd",
 		"res://scripts/tests/unit/cases/test_player_feet_on_ground.gd",
+		"res://scripts/tests/unit/cases/test_penguin_feet_on_ground.gd",
 		"res://scripts/tests/unit/cases/test_glombolg_position.gd",
 		"res://scripts/tests/unit/cases/test_glombolg_collision.gd",
+		"res://scripts/tests/unit/cases/test_penguin_not_colliding.gd",
 		"res://scripts/tests/unit/cases/test_no_drift_idle.gd",
 		"res://scripts/tests/unit/cases/test_glb_anims_present.gd",
-		"res://scripts/tests/unit/cases/test_anim_pose_changes_moving.gd",
-		"res://scripts/tests/unit/cases/test_anim_loops.gd"
+		"res://scripts/tests/unit/cases/test_anim_loops.gd",
+		"res://scripts/tests/unit/cases/test_pack_loader.gd",
+		"res://scripts/tests/unit/cases/test_web_quality.gd",
+		"res://scripts/tests/unit/cases/test_world_scene_loads.gd"
 	]
 	for path in cases:
 		var s := load(path)
